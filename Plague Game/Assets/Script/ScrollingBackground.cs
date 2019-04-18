@@ -11,9 +11,15 @@ public class ScrollingBackground : MonoBehaviour
 	private int left;
 	private int right;	
 	
+	public float speed;
+	private float camerapos;
+	
+	
 	private void Start()
 	{
+		
 		cameraTransform = Camera.main.transform;
+		camerapos = cameraTransform.position.x;
 		no_of_layers = new Transform[transform.childCount];
 		
 		for(int i=0; i<transform.childCount; i++)		
@@ -26,6 +32,9 @@ public class ScrollingBackground : MonoBehaviour
 	
 	private void Update()
 	{
+		float x2 = cameraTransform.position.x - camerapos;
+		transform.position += Vector3.right * (x2 * speed);
+		camerapos = cameraTransform.position.x;
 		if(cameraTransform.position.x < (no_of_layers[left].transform.position.x + view))
 			ScrollLeft();
 		
