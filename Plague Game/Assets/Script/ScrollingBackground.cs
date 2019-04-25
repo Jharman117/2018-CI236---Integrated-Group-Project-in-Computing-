@@ -16,8 +16,7 @@ public class ScrollingBackground : MonoBehaviour
 	
 	
 	private void Start()
-	{
-		
+	{		
 		cameraTransform = Camera.main.transform;
 		camerapos = cameraTransform.position.x;
 		no_of_layers = new Transform[transform.childCount];
